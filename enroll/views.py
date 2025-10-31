@@ -7,4 +7,14 @@ def home(request):
 
 def create_view(request):
     return render(request, 'create.html')
-    
+
+def create_emp(request):
+    if request.method == 'POST':
+        emp_id = request.POST.get('emp_id')
+        emp_name = request.POST.get('emp_name')
+        emp_dept = request.POST.get('emp_dept')
+
+        if emp_id and emp_name and emp_dept:
+            Employee.objects.create(emp_id=emp_id, emp_name=emp_name,emp_dept=emp_dept)
+            return redirect("/")
+    return render(request, 'create.html')
