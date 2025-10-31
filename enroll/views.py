@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee
 # Create your views here.
 def home(request):
-    Employees = Employee.objects.all()
-    return render(request,'home.html', {'Enmployees':Employees})
+    employees = Employee.objects.all()
+    return render(request,'home.html', {'enmployees':employees})
 
 def create_view(request):
     return render(request, 'create.html')
@@ -20,5 +20,5 @@ def create_emp(request):
     return render(request, 'create.html')
 
 def update_view(request, id):
-    Employee = get_object_or_404(request, id=id)
-    return render(request, 'update.html',{'Employee':Employee})
+    employee = get_object_or_404(request, id=id)
+    return render(request, 'update.html',{'employee':employee})
