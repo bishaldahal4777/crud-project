@@ -3,7 +3,7 @@ from .models import Employee
 # Create your views here.
 def home(request):
     employees = Employee.objects.all()
-    return render(request,'home.html', {'enmployees':employees})
+    return render(request,'home.html', {'employees':employees})
 
 def create_view(request):
     return render(request, 'create.html')
@@ -20,11 +20,11 @@ def create_emp(request):
     return render(request, 'create.html')
 
 def update_view(request, id):
-    employee = get_object_or_404(request, id=id)
+    employee = get_object_or_404(Employee, id=id)
     return render(request, 'update.html',{'employee':employee})
 
 def update_emp(request, id):
-    employee = get_object_or_404(request, id=id)
+    employee = get_object_or_404(Employee, id=id)
 
     if request.method == 'POST':
         employee.emp_id = request.POST.get('emp_id', employee.emp_id)
@@ -35,6 +35,6 @@ def update_emp(request, id):
     return render(request, 'update.html',{'employee':employee})
 
 def delete(request, id):
-    employee = get_object_or_404(request, id=id)
+    employee = get_object_or_404(Employee, id=id)
     employee.delete()
     return redirect("/")
