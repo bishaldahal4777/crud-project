@@ -16,7 +16,7 @@
         <form action="{% url 'create_emp' %}" method="post">
             {% csrf_token %}
             <label for="">Employee ID</label><br><br>
-            <input type="number" name="emp_id"><br><br>
+            <input type="text" name="emp_id"><br><br>
             <label for="">Employee Name</label><br><br>
             <input type="text" name="emp_name"><br><br>
             <label for="">Employee Department</label><br><br>
