@@ -22,3 +22,14 @@ def create_emp(request):
 def update_view(request, id):
     employee = get_object_or_404(request, id=id)
     return render(request, 'update.html',{'employee':employee})
+
+def update_emp(request, id):
+    employee = get_object_or_404(request, id=id)
+
+    if request.method == 'POST':
+        employee.emp_id = request.POST.get('emp_id', employee.emp_id)
+        employee.emp_name = request.POST.get('emp_name',employee.emp_name)
+        employee.emp_dept = request.POST.get('emp_dept', employee.emp_dept)
+        employee.save()
+        return redirect("/")
+    return render(request, 'update.html',{'employee':employee})
