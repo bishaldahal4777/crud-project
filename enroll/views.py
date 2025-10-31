@@ -18,3 +18,7 @@ def create_emp(request):
             Employee.objects.create(emp_id=emp_id, emp_name=emp_name,emp_dept=emp_dept)
             return redirect("/")
     return render(request, 'create.html')
+
+def update_view(request, id):
+    Employee = get_object_or_404(request, id=id)
+    return render(request, 'update.html',{'Employee':Employee})
