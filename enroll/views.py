@@ -33,3 +33,8 @@ def update_emp(request, id):
         employee.save()
         return redirect("/")
     return render(request, 'update.html',{'employee':employee})
+
+def delete(request, id):
+    employee = get_object_or_404(request, id=id)
+    employee.delete()
+    return redirect("/")
