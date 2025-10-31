@@ -3,4 +3,4 @@ from .models import Employee
 # Create your views here.
 def home(request):
     Employees = Employee.objects.all()
-    
+    return render(request,'home.html', {'Enmployees':Employees})
